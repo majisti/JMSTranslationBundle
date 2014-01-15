@@ -39,12 +39,12 @@ class FormExtractorTest extends \PHPUnit_Framework_TestCase
         $path = __DIR__.'/Fixture/MyFormType.php';
 
         $message = new Message('bar');
-        $message->addSource(new FileSource($path, 36));
+        $message->addSource(new FileSource($path, 37));
         $expected->add($message);
 
         $message = new Message('form.states.empty_value');
         $message->setDesc('Please select a state');
-        $message->addSource(new FileSource($path, 37));
+        $message->addSource(new FileSource($path, 38));
         $expected->add($message);
 
         $message = new Message('form.label.lastname');
@@ -52,62 +52,67 @@ class FormExtractorTest extends \PHPUnit_Framework_TestCase
         $message->addSource(new FileSource($path, 33));
         $expected->add($message);
 
+        $message = new Message('form.help.lastname');
+        $message->setDesc('Enter your lastname');
+        $message->addSource(new FileSource($path, 34));
+        $expected->add($message);
+
         $message = new Message('form.label.firstname');
         $message->addSource(new FileSource($path, 30));
         $expected->add($message);
 
         $message = new Message('form.label.password');
-        $message->addSource(new FileSource($path, 42));
+        $message->addSource(new FileSource($path, 43));
         $expected->add($message);
 
         $message = new Message('form.label.password_repeated');
         $message->setDesc('Repeat password');
-        $message->addSource(new FileSource($path, 45));
+        $message->addSource(new FileSource($path, 46));
         $expected->add($message);
 
         $message = new Message('form.label.street', 'address');
         $message->setDesc('Street');
-        $message->addSource(new FileSource($path, 50));
+        $message->addSource(new FileSource($path, 51));
         $expected->add($message);
 
         $message = new Message('form.label.zip', 'address');
         $message->setDesc('ZIP');
-        $message->addSource(new FileSource($path, 55));
+        $message->addSource(new FileSource($path, 56));
         $expected->add($message);
 
         $message = new Message('form.error.password_mismatch', 'validators');
         $message->setDesc('The entered passwords do not match');
-        $message->addSource(new FileSource($path, 47));
+        $message->addSource(new FileSource($path, 48));
         $expected->add($message);
 
         $message = new Message('form.label.created');
-        $message->addSource(new FileSource($path, 68));
+        $message->addSource(new FileSource($path, 69));
         $expected->add($message);
 
         $message = new Message('field.with.placeholder');
-        $message->addSource(new FileSource($path, 59));
+        $message->addSource(new FileSource($path, 60));
         $expected->add($message);
 
         $message = new Message('form.placeholder.text');
         $message->setDesc('Field with a placeholder value');
-        $message->addSource(new FileSource($path, 60));
+        $message->addSource(new FileSource($path, 61));
         $expected->add($message);
 
         $message = new Message('form.placeholder.text.but.no.label');
         $message->setDesc('Field with a placeholder but no label');
-        $message->addSource(new FileSource($path, 64));
+        $message->addSource(new FileSource($path, 65));
         $expected->add($message);
 
         $message = new Message('form.dueDate.empty.year');
-        $message->addSource(new FileSource($path, 72));
+        $message->addSource(new FileSource($path, 73));
         $expected->add($message);
 
         $message = new Message('form.dueDate.empty.month');
-        $message->addSource(new FileSource($path, 72));
+        $message->addSource(new FileSource($path, 73));
         $expected->add($message);
 
         $message = new Message('form.dueDate.empty.day');
-        $message->addSource(new FileSource($path, 72));
+        $message->addSource(new FileSource($path, 73));
         $expected->add($message);
 
         $this->assertEquals($expected, $this->extract('MyFormType.php'));

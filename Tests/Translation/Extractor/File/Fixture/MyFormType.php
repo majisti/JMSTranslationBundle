@@ -31,6 +31,7 @@ class MyFormType extends AbstractType
             ))
             ->add('lastname', 'text', array(
                 'label' => /** @Desc("Lastname") */ 'form.label.lastname',
+                'help' => /** @Desc("Enter your lastname") */ 'form.help.lastname',
             ))
             ->add('states', 'choice', array(
                 'choices' => array('foo' => 'bar'),
